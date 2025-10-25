@@ -1,0 +1,72 @@
+* Exercises to learn OCAML
+
+https://ocaml.org/exercises
+
+** Tail of a list
+#+begin_src ocaml
+let rec last = function
+  | [] -> None
+  | a :: [] -> Some a
+  | a :: t -> last t;;
+
+last ["a" ; "b" ;  "c"];;
+#+end_src
+** Last two elements of a list
+#+begin_src ocaml
+let rec last_two = function
+  | [] | _ :: [] -> None
+  | a :: b :: [] -> Some (a,b)
+  | _ :: t -> last_two t;;
+
+let rep1 = last_two ["a"; "b"; "c"; "d"];;
+let rep2 = last_two ["a"];;
+#+end_src
+** Length of a list
+#+begin_src ocaml
+let length l =
+  let rec aux i = function
+    | [] -> i
+    | _::t -> aux (i+1) t in
+  aux 0 l;;
+
+length ["a"; "b"; "c"];;
+#+end_src
+** Max of a list
+#+begin_src ocaml
+let max_list l =
+    let rec h acc = function
+	[] -> acc
+      | h :: t -> h (max acc h) t
+    in
+    h 0 l
+#+end_src
+** nth element
+#+begin_src ocaml
+let rec at i list =
+  match list, i with
+  | a :: _, 0 -> Some a
+  | _ :: t, i -> at (i-1) t
+  | [], _ -> None;;
+
+at 2 ["a"; "b"; "c"; "d"; "e"];;
+at 2 ["a"];;
+#+end_src
+** reverse
+#+begin_src ocaml
+let rec at i list =
+  match list, i with
+  | a :: _, 0 -> Some a
+  | _ :: t, i -> at (i-1) t
+  | [], _ -> None;;
+
+at 2 ["a"; "b"; "c"; "d"; "e"];;
+at 2 ["a"];;
+#+end_src
+** palindrome
+#+begin_src ocaml
+let is_palindrome l =
+  l = List.rev l;;
+
+is_palindrome ["x"; "a"; "m"; "a"; "x"];;
+not (is_palindrome ["a"; "b"]);;
+#+end_src
