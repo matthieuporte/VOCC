@@ -1,7 +1,8 @@
-(library
- (name interp))
+(executable
+ (public_name vocc)
+ (name main)
+ (modules main)
+ (libraries
+   interp
+   llvm))
 
-(menhir
- (modules parser))
-
-(ocamllex lexer)
