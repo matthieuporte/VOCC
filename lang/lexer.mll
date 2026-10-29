@@ -11,13 +11,19 @@ let id = letter+
 rule read =
   parse
   white { read lexbuf }
+  | '\n' { Lexing.new_line lexbuf; read lexbuf }
   | "*" { TIMES }
   | "+" { PLUS }
   | "-" { MINUS }
   | "/" { DIV }
   | "(" { LPAREN }
   | ")" { RPAREN }
+  | "{" { LBRACE }
+  | "}" { RBRACE }
+  | "[" { LBRACKET }
+  | "]" { RBRACKET }
   | ";" { SEMICOLON }
+  | "return" { RETURN }
   | id { ID (Lexing.lexeme lexbuf) }
   | int { NUM (int_of_string (Lexing.lexeme lexbuf)) }
   | eof { EOF }

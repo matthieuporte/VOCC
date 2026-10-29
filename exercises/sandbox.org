@@ -1,7 +1,7 @@
 * Sandbox for learning OCAMl
 
 ~C-c '~   for ~org-edit-special~
-~SPC e b~ for ~tuareg-eval-region~
+ for ~tuareg-eval-region~
 
 #+begin_src ocaml
 (** [from i j l] is the list containing the integers from [i] to [j],

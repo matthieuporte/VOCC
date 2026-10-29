@@ -89,3 +89,4 @@ let a =  PrintStm[IdExp"a";IdExp"b";OpExp(IdExp"a", Minus,NumExp 1)]
 (* let m2 = maxargs a *)
 
 let _ = interp prog
+

@@ -1,8 +1,7 @@
 (executable
  (public_name vocc)
  (name main)
- (modules main)
+ (modules main pretty codegen)
  (libraries
-   interp
-   llvm))
-
+   lang))
+   ; llvm))

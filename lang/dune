@@ -1,5 +1,5 @@
 (library
- (name interp))
+ (name lang))
 
 (menhir
  (modules parser))

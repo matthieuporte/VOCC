@@ -10,15 +10,20 @@ open Ast
 %token DIV
 %token LPAREN
 %token RPAREN
+%token LBRACE
+%token RBRACE
+%token LBRACKET
+%token RBRACKET
 %token SEMICOLON
 %token EOF
 
-%left PLUS
-%left TIMES
-%left MINUS
-%left DIV
+/* keywords C */
+%token RETURN
 
-%start <Ast.stm> prog
+%left PLUS MINUS
+%left TIMES DIV
+
+%start <stm> prog
 
 %%
 
@@ -27,7 +32,11 @@ prog:
   ;
 
 stm:
-  | f = ID; LPAREN; e = exp; RPAREN; SEMICOLON { FunctioncallStm (f, e) }
+/* function definition (no parameters yet TODO) */
+  | ftype = ID; fn = ID; LPAREN;  RPAREN; LBRACE ; s = stm; RBRACE { FunctiondefStm (ftype, fn, s)}
+  | RETURN ; e = exp ; SEMICOLON { Return e }
+/* function call */
+  /* | f = ID; LPAREN; e = exp; RPAREN; SEMICOLON { FunctioncallStm (f, e) } */
   ;
 
 exp:

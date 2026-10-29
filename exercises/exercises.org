@@ -1,3 +1,8 @@
+* Org mode help
+
+~C-c C-c~ to run a code block.
+~C-c '~ to edit a code block in its own window.
+
 * Exercises to learn OCAML
 
 https://ocaml.org/exercises
@@ -9,8 +14,12 @@ let rec last = function
   | a :: [] -> Some a
   | a :: t -> last t;;
 
-last ["a" ; "b" ;  "c"];;
+last ["a" ; "b" ;  "c" ; "d"];;
 #+end_src
+
+#+RESULTS:
+: Some "d"
+
 ** Last two elements of a list
 #+begin_src ocaml
 let rec last_two = function
